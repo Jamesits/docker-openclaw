@@ -27,7 +27,7 @@ jobs:
         with:
           images: docker.io/jamesits/openclaw
           tags: |
-            type=edge,branch=master
+            type=edge,branch=trunk
             type=semver,pattern={{version}}
       - uses: docker/build-push-action@v6
         with:

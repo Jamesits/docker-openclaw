@@ -1,7 +1,7 @@
 services:
   openclaw-gateway:
     build: .
-    image: localhost/openclaw
+    image: hub.docker.io/jamesits/openclaw:latest
     environment:
       HOME: /home/node
       TERM: xterm-256color
