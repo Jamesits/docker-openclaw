@@ -1,0 +1,4 @@
+./deployment
+.env
+docker-compose.yml
+README.md
