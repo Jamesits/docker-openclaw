@@ -1,0 +1,44 @@
+# OpenClaw Container Auto Builder
+
+[![Docker Image Version](https://img.shields.io/docker/v/jamesits/openclaw?label=Docker%20Hub&sort=semver)](http://hub.docker.com/r/jamesits/openclaw)
+
+# Usage
+
+## First Time Setup
+
+Copy `.env.example` to `.env` and fill
+
+```shell
+# create deployment directories
+docker compose up -d
+# If running with root
+sudo chown -R 1000:1000 ./deployment/home
+# If running with rootless Docker - substitite the UID/GID with your subuid/subgid mapping. E.g. using `user:100000:65536`
+sudo chown -R 100999:100999 ./deployment/home
+# Restart the container so that it stops the crash loop and we are able to configure it
+docker compose restart
+
+# enable control UI
+./openclaw-cli.sh setup
+./openclaw-cli.sh config set env.shellEnv.enabled true
+./openclaw-cli.sh config set gateway.bind lan
+./openclaw-cli.sh config set gateway.controlUi.allowedOrigins[0] localhost
+docker compose restart
+
+# Visit http://localhost:18789
+# Go to Control -> Overview, fill in Gateway Token, click Connect until it asks for pairing
+
+# Pairing
+./openclaw-cli.sh devices list
+./openclaw-cli.sh devices approve <request_uuid>
+```
+
+## Setup models
+
+```shell
+./openclaw-cli.sh config set agents.defaults.model.primary openrouter/anthropic/claude-opus-4.6
+```
+
+# Notes
+
+OpenClaw's code quality is very low and most of its features are untested. If it breaks one day, keep calm and use something better.
