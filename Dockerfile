@@ -25,4 +25,6 @@ ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}
 USER root
 RUN chown -R node:node /home/node /home/linuxbrew
 
+# reset env
 USER node
+WORKDIR /app
