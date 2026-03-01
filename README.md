@@ -4,6 +4,11 @@
 ![Project Status - Feature Complete](https://img.shields.io/badge/Project_Status-Feature_Complete-2ea44f)
 [![Docker Image Version](https://img.shields.io/docker/v/jamesits/openclaw?label=Docker%20Hub&sort=semver)](http://hub.docker.com/r/jamesits/openclaw)
 
+Differences to the official image:
+- Preinstalled some programs as instructed by [the doc](https://docs.openclaw.ai/install/docker#power-user-%2F-full-featured-container-opt-in)
+- No need to run extra container for the command line
+- External headless Chromium
+
 # Usage
 
 ## First Time Setup
@@ -49,7 +54,7 @@ Commands are provided as-is. You cannot set this by the command line configure t
 ./openclaw-cli.sh config set browser.enabled true
 ./openclaw-cli.sh config set browser.defaultProfile chrome
 ./openclaw-cli.sh config set browser.profiles.chrome "#00AA00"
-./openclaw-cli.sh config set browser.profiles.chrome.cdpUrl http://"$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker-compose ps -q chromium)")":9222
+./openclaw-cli.sh config set browser.profiles.chrome.cdpUrl http://"$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker-compose ps -q chromium)" | head -n 1)":9222
 ```
 
 Validation:
@@ -60,9 +65,19 @@ Expect `running: true`.
 
 ## Maintenance
 
+OpenClaw shell / command line tool:
+```shell
+./openclaw-cli.sh <command> [args...]
+```
+
 View logs:
 ```shell
 docker compose logs -f
+```
+
+Edit the config file:
+```shell
+sudo vim deployment/home/.openclaw/openclaw.json
 ```
 
 Restarting:
@@ -72,4 +87,6 @@ docker compose restart
 
 # Notes
 
-OpenClaw's code quality is very low and most of its features are untested. If it breaks one day, keep calm and use something better.
+OpenClaw's code quality is very low and most of its features are untested. If it breaks one day, keep calm and enjoy our brave new world.
+
+OpenClaw (including its codebase, plugins and what it allows an agent to do) is insecure. Docker is not a proper security defense against it. This container is only provided for the ease of deployment and does not imply any security enhancement.

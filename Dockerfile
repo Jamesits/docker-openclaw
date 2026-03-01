@@ -1,7 +1,7 @@
 FROM ghcr.io/openclaw/openclaw:2026.2.26
 
+# apt packages
 USER root
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     procps \
