@@ -21,9 +21,9 @@ ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}
 USER root
 RUN chown -R node:node /home/node /home/linuxbrew
 
-# plugins
-RUN node dist/index.js plugins install @openclaw/feishu
-
 # reset env
 USER node
 WORKDIR /app
+
+# plugins
+RUN node dist/index.js plugins install @openclaw/feishu
