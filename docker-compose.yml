@@ -2,6 +2,8 @@ services:
   openclaw-gateway:
     build: .
     image: docker.io/jamesits/openclaw:edge
+    networks:
+      - openclaw
     environment:
       HOME: /home/node
       TERM: xterm-256color
@@ -21,3 +23,13 @@ services:
         "gateway",
         "--allow-unconfigured",
       ]
+
+  chromium:
+    image: docker.io/chromedp/headless-shell:stable
+    restart: unless-stopped
+    networks:
+      - openclaw
+    shm_size: "2gb"
+
+networks:
+  openclaw: {}

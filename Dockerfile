@@ -10,10 +10,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     jq \
     && rm -rf /var/lib/apt/lists/*
 
-# Playwright
-ENV PLAYWRIGHT_BROWSERS_PATH=0
-RUN node /app/node_modules/playwright-core/cli.js install --with-deps chromium
-
 # Homebrew
 USER node
 WORKDIR /home/linuxbrew
@@ -24,6 +20,9 @@ ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}
 # fix permissions
 USER root
 RUN chown -R node:node /home/node /home/linuxbrew
+
+# plugins
+RUN node dist/index.js plugins install @openclaw/feishu
 
 # reset env
 USER node

@@ -39,6 +39,35 @@ docker compose restart
 ./openclaw-cli.sh config set agents.defaults.model.primary openrouter/anthropic/claude-opus-4.6
 ```
 
+## Setup Browser
+
+Commands are provided as-is. You cannot set this by the command line configure tool because of an idiotic and useless check. Just edit the JSON config yourself.
+
+```shell
+./openclaw-cli.sh config set browser.enabled true
+./openclaw-cli.sh config set browser.defaultProfile chrome
+./openclaw-cli.sh config set browser.profiles.chrome "#00AA00"
+./openclaw-cli.sh config set browser.profiles.chrome.cdpUrl http://"$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker-compose ps -q chromium)")":9222
+```
+
+Validation:
+```shell
+./openclaw-cli.sh browser status
+```
+Expect `running: true`.
+
+## Maintenance
+
+View logs:
+```shell
+docker compose logs -f
+```
+
+Restarting:
+```shell
+docker compose restart
+```
+
 # Notes
 
 OpenClaw's code quality is very low and most of its features are untested. If it breaks one day, keep calm and use something better.
