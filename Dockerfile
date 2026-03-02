@@ -26,4 +26,5 @@ USER node
 WORKDIR /app
 
 # plugins
-RUN node dist/index.js plugins install @openclaw/feishu
+# Note: feishu is already preinstalled
+# RUN node dist/index.js plugins install @openclaw/feishu
