@@ -29,7 +29,7 @@ docker compose restart
 ./openclaw-cli.sh setup
 ./openclaw-cli.sh config set env.shellEnv.enabled true
 ./openclaw-cli.sh config set gateway.bind lan
-./openclaw-cli.sh config set gateway.controlUi.allowedOrigins[0] localhost
+./openclaw-cli.sh config set gateway.controlUi.allowedOrigins[0] http://localhost:18789
 docker compose restart
 
 # Visit http://localhost:18789
