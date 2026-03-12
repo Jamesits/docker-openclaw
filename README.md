@@ -54,7 +54,7 @@ Commands are provided as-is. You cannot set this by the command line configure t
 ./openclaw-cli.sh config set browser.enabled true
 ./openclaw-cli.sh config set browser.defaultProfile chrome
 ./openclaw-cli.sh config set browser.profiles.chrome "#00AA00"
-./openclaw-cli.sh config set browser.profiles.chrome.cdpUrl http://"$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker-compose ps -q chromium)" | head -n 1)":9222
+./openclaw-cli.sh config set browser.profiles.chrome.cdpUrl http://"$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker compose ps -q chromium)" | head -n 1)":9222
 ```
 
 Validation:
