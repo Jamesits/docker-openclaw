@@ -82,7 +82,7 @@ sudo vim deployment/home/.openclaw/openclaw.json
 
 Restarting:
 ```shell
-docker compose restart
+./reconfigure.sh
 ```
 
 # Notes
