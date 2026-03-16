@@ -1,4 +1,4 @@
-FROM ghcr.io/openclaw/openclaw:2026.3.11
+FROM ghcr.io/openclaw/openclaw:2026.3.13
 
 # apt packages
 USER root
@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     jq \
+    python3-pip python3-six python3-numpy python3-openpyxl python3-et-xmlfile python3-dateutil python3-pandas python3-scipy python3-seaborn \
     && rm -rf /var/lib/apt/lists/*
 
 # Homebrew
