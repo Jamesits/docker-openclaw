@@ -1,7 +1,8 @@
 services:
   openclaw-gateway:
     build: .
-    image: docker.io/jamesits/openclaw:edge
+    # use docker.io/jamesits/openclaw:edge for testing images
+    image: docker.io/jamesits/openclaw:latest
     networks:
       - openclaw
     environment:
