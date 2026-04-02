@@ -1,4 +1,7 @@
-FROM ghcr.io/openclaw/openclaw:2026.3.31
+# renovate: datasource=github-tags packageName=openclaw/openclaw versioning=semver-coerced
+ARG OPENCLAW_VERSION="2026.3.31"
+
+FROM ghcr.io/openclaw/openclaw:$OPENCLAW_VERSION
 
 # apt packages
 USER root
