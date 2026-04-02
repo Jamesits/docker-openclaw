@@ -9,10 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
       - uses: docker/setup-buildx-action@v4
+
       - uses: docker/build-push-action@v7
         with:
           context: .
