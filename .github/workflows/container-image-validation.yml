@@ -23,5 +23,10 @@ jobs:
       - uses: docker/build-push-action@v7
         with:
           context: .
+          load: true
           push: false
+          tags: openclaw:ci-smoke
           cache-from: type=registry,ref=docker.io/jamesits/openclaw:github-actions-cache
+
+      - name: Smoke test container image
+        run: ./scripts/container-smoke-test.sh openclaw:ci-smoke
