@@ -34,6 +34,7 @@ jobs:
             debian.map.fastlydns.net:80
             raw.githubusercontent.com:443
             github.com:443
+            formulae.brew.sh:443
 
       - uses: actions/checkout@v6
         with:
