@@ -26,6 +26,8 @@ jobs:
             ghcr.io:443
             _http._tcp.deb.debian.org:443
             deb.debian.org:443
+            deb.debian.org:80
+            debian.map.fastlydns.net:443
 
       - uses: actions/checkout@v6
         with:
