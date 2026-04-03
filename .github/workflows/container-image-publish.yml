@@ -28,6 +28,7 @@ jobs:
             deb.debian.org:443
             deb.debian.org:80
             debian.map.fastlydns.net:443
+            raw.githubusercontent.com:443
 
       - uses: actions/checkout@v6
         with:
