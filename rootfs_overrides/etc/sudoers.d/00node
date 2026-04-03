@@ -1,1 +1,2 @@
+linuxbrew ALL=(ALL) NOPASSWD: ALL
 node ALL=(ALL) NOPASSWD: ALL
