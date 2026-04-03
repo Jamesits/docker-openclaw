@@ -1,5 +1,8 @@
 name: "Container Image Publish"
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -28,7 +31,9 @@ jobs:
             deb.debian.org:443
             deb.debian.org:80
             debian.map.fastlydns.net:443
+            debian.map.fastlydns.net:80
             raw.githubusercontent.com:443
+            github.com:443
 
       - uses: actions/checkout@v6
         with:
