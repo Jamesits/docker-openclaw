@@ -8,14 +8,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     jq \
-    python3-pip python3-six python3-numpy python3-openpyxl python3-et-xmlfile python3-dateutil python3-pandas python3-scipy python3-seaborn \
+    python3-pip python3-six python3-numpy python3-openpyxl python3-et-xmlfile python3-dateutil python3-pandas python3-scipy python3-seaborn sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Homebrew
 USER node
 WORKDIR /home/linuxbrew
 ENV HOMEBREW_NO_ANALYTICS=1
-RUN NONINTERACTIVE=1 bash -Eeuc "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+RUN printf "node ALL=(ALL) NOPASSWD:ALL\n" > /etc/sudoers.d/temp \
+    && NONINTERACTIVE=1 bash -Eeuc "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+    && rm -rf /etc/sudoers.d/temp
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 # fix permissions
