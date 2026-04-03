@@ -1,7 +1,5 @@
 FROM ghcr.io/openclaw/openclaw:2026.4.2
 
-COPY --chown=0:0 rootfs_overrides/. /
-
 # apt packages
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -12,6 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     jq \
     python3-pip python3-six python3-numpy python3-openpyxl python3-et-xmlfile python3-dateutil python3-pandas python3-scipy python3-seaborn sudo \
     && rm -rf /var/lib/apt/lists/*
+
+COPY --chown=0:0 rootfs_overrides/. /
+RUN chmod 0440 /etc/sudoers.d/*
 
 # Homebrew
 USER node
