@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 USER node
 WORKDIR /home/linuxbrew
 ENV HOMEBREW_NO_ANALYTICS=1
-RUN NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+RUN NONINTERACTIVE=1 bash -Eeuc "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 # fix permissions
