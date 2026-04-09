@@ -44,7 +44,7 @@ for _ in {1..30}; do
     exit 1
   fi
 
-  if docker logs "${container_name}" 2>&1 | grep -Fq "[gateway] listening on"; then
+  if docker logs "${container_name}" 2>&1 | grep -Fq "[gateway] ready"; then
     exit 0
   fi
 
