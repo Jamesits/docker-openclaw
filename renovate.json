@@ -3,7 +3,6 @@
     "extends": [
         "github>jamesits/.github//renovate/default"
     ],
-    "autoMerge": true,
     "packageRules": [
         {
             "groupName": "all dependencies",
@@ -11,7 +10,8 @@
             "matchPackageNames": [
                 "*"
             ],
-            "labels": ["renovate:all"]
+            "labels": ["renovate:all"],
+            "automerge": true
         }
     ]
 }
