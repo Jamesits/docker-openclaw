@@ -1,7 +1,17 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "github>jamesits/.github//renovate/default",
-        "github>jamesits/.github//renovate/group-monorepo"
+        "github>jamesits/.github//renovate/default"
+    ],
+    "autoMerge": true,
+    "packageRules": [
+        {
+            "groupName": "all dependencies",
+            "groupSlug": "all",
+            "matchPackageNames": [
+                "*"
+            ],
+            "labels": ["renovate:all"]
+        }
     ]
 }
