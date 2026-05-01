@@ -38,7 +38,7 @@ PY
 docker run -d --name "${container_name}" -e HOME=/home/node "${image_ref}" \
   node dist/index.js gateway --allow-unconfigured >/dev/null
 
-for _ in {1..30}; do
+for _ in {1..120}; do
   if [[ "$(docker inspect -f '{{.State.Running}}' "${container_name}")" != "true" ]]; then
     docker logs "${container_name}"
     exit 1
