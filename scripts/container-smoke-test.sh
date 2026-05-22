@@ -35,7 +35,7 @@ PY
   node dist/index.js --help >/dev/null
 '
 
-docker run -d --name "${container_name}" -e HOME=/home/node "${image_ref}" \
+docker run -d --name "${container_name}" -e HOME=/home/node -e "OPENCLAW_GATEWAY_PASSWORD=114514" "${image_ref}" \
   node dist/index.js gateway --allow-unconfigured >/dev/null
 
 for _ in {1..120}; do
