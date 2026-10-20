@@ -1,4 +1,4 @@
-FROM ghcr.io/openclaw/openclaw:2026.10.4
+FROM ghcr.io/openclaw/openclaw:2026.10.5
 
 # apt packages
 USER root
